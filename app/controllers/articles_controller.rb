@@ -18,20 +18,32 @@ class ArticlesController < ApplicationController
   def create
     @article = Article.new(article_params)
 
-    if @article.save
-      redirect_to @article
-    else
-      render 'new'
+    respond_to do |format|
+      if @article.save
+        flash[:success] = 'Article was successfully created.'
+        format.html { redirect_to @article }
+        format.json { render :show, status: :created, location: @article }
+      else
+        flash[:danger] = 'There was a problem creating the Article.'
+        format.html { render :new }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 
   def update
     @article = Article.find(params[:id])
 
-    if @article.update(article_params)
-      redirect_to @article
-    else
-      render 'edit'
+    respond_to do |format|
+      if @article.update(article_params)
+        flash[:success] = 'Article was successfully updated.'
+        format.html { redirect_to @article }
+        format.json { render :show, status: :ok, location: @article }
+      else
+        flash[:danger] = 'There was a problem updating the Article.'
+        format.html { render :edit }
+        format.json { render json: @article.errors, status: :unprocessable_entity }
+      end
     end
   end
 

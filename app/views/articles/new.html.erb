@@ -1,5 +1,14 @@
+<ul class="nav nav-tabs" role="tablist">
+  <li><%= link_to 'View Articles', articles_path %></li>
+  <li class="active"><%= link_to 'New Article', new_article_path %></li>
+</ul>
+
 <h1>New Article</h1>
 
 <%= render 'form' %>
 
-<%= link_to 'Back', articles_path %>
+<div class="actions form-group">
+  <div class="col-sm-offset-2 col-sm-10">
+    <%= link_to 'Back', articles_path %>
+  </div>
+</div>
