@@ -1,7 +1,13 @@
 class CommentsController < ApplicationController
   def create
     @article = Article.find(params[:article_id])
-    @comment = @article.comments.create(comment_params)
+    @comment = @article.comments.new(comment_params)
+
+    if @comment.save
+      flash[:success] = 'Comment was successfully created.'
+    else
+      flash[:danger] = 'There was a problem creating the Comment. Please fill all the required fields'
+    end
 
     redirect_to article_path(@article)
   end

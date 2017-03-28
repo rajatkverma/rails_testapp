@@ -2,10 +2,6 @@
 
   <% if @article.errors.any? %>
     <div id="error_explanation">
-      <h2>
-        <%= pluralize(@article.errors.count, "error") %> prohibited
-        this article from being saved:
-      </h2>
       <ul>
         <% @article.errors.full_messages.each do |msg| %>
           <li><%= msg %></li>
@@ -15,22 +11,23 @@
   <% end %>
 
   <div class="field form-group">
-    <%= f.label :title, class: 'col-sm-2 control-label'%>
-    <div class="col-sm-10">
+    <%= f.label :title, class: 'col-sm-1 control-label'%>
+    <div class="col-sm-8">
       <%= f.text_field :title, class: 'form-control'%>
     </div>
   </div>
 
   <div class="field form-group">
-    <%= f.label :text, class: 'col-sm-2 control-label'%>
-    <div class="col-sm-10">
+    <%= f.label :text, class: 'col-sm-1 control-label'%>
+    <div class="col-sm-8">
       <%= f.text_area :text, class: 'form-control'%>
     </div>
   </div>
 
   <div class="actions form-group">
-    <div class="col-sm-offset-2 col-sm-10">
+    <div class="col-sm-offset-1 col-sm-8">
       <%= f.submit %>
+      <%= link_to 'Back', articles_path %>
     </div>
   </div>
 <% end %>
