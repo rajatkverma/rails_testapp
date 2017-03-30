@@ -38,10 +38,11 @@
 <% end %>
 
 <!-- Button trigger modal -->
-
-<button type="button" class="btn btn-default" data-toggle="modal", data-target="#addComment">
-  Add a comment
-</button>
+<div style="margin-top:20px">
+  <button type="button" class="btn btn-default top-buffer" data-toggle="modal", data-target="#addComment">
+    Add a comment
+  </button>
+</div>
 
 
   <!-- Modal -->
@@ -67,16 +68,11 @@
               <%= f.text_area :body, class: 'form-control' %>
             </div>
           </div>
-
-          <div class="actions form-group">
-            <div class="col-sm-offset-2 col-sm-6">
-              <%= f.submit %>
-            </div>
+          <div class="modal-footer">
+            <%= f.submit class: 'btn btn-primary'%>
+            <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
           </div>
         <% end %>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-primary" data-dismiss="modal">Close</button>
       </div>
     </div>
   </div>
