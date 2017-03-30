@@ -7,23 +7,31 @@
   </li>
 </ul>
 
-<table class='table'>
-  <tr>
-    <th>Title</th>
-    <th>Text</th>
-    <th colspan="3"></th>
-  </tr>
-
-  <% @articles.each do |article| %>
+<% if @articles.any? %>
+  <table class='table'>
     <tr>
-      <td><%= article.title %></td>
-      <td><%= article.text %></td>
-      <td><%= link_to 'Show', article_path(article), class: 'btn btn-primary btn-xs' %></td>
-      <td><%= link_to 'Edit', edit_article_path(article), class: 'btn btn-info btn-xs' %></td>
-      <td><%= link_to 'Delete', article_path(article), method: :delete,
-              data: { confirm: "Are you Sure?" }, class: 'btn btn-danger btn-xs'  %></td>
+      <th>Title</th>
+      <th>Text</th>
+      <th colspan="3"></th>
     </tr>
-  <% end %>
-</table>
+
+    <% @articles.each do |article| %>
+      <tr>
+        <td><%= article.title %></td>
+        <td><%= article.text %></td>
+        <td><%= link_to 'Show', article_path(article), class: 'btn btn-primary btn-xs' %></td>
+        <td><%= link_to 'Edit', edit_article_path(article), class: 'btn btn-info btn-xs' %></td>
+        <td><%= link_to 'Delete', article_path(article), method: :delete,
+                data: { confirm: "Are you Sure?" }, class: 'btn btn-danger btn-xs'  %></td>
+      </tr>
+    <% end %>
+  </table>
+<% else %>
+  <h2> 
+    There are no Articles. Click <%= link_to new_article_path, class: 'btn btn-success' do %> 
+      <i class="glyphicon glyphicon-plus"></i> New Article
+    <% end %> to add a new Article
+  </h2>
+<% end %>
 
 

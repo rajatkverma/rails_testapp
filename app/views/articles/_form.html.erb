@@ -13,14 +13,14 @@
   <div class="field form-group">
     <%= f.label :title, class: 'col-sm-1 control-label'%>
     <div class="col-sm-8">
-      <%= f.text_field :title, class: 'form-control'%>
+      <%= f.text_area :title, class: 'form-control', ckeditor: { uiColor: '#AADC6E', toolbar: 'mini' } %>
     </div>
   </div>
 
   <div class="field form-group">
     <%= f.label :text, class: 'col-sm-1 control-label'%>
     <div class="col-sm-8">
-      <%= f.text_area :text, class: 'form-control'%>
+      <%= f.cktext_area :text, class: 'form-control'%>
     </div>
   </div>
 
